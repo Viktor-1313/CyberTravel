@@ -227,6 +227,23 @@
         <img src="images/2.png" alt="Фон" class="background-image">
         <div class="logo" onclick="window.location.href='index.html'">CyberTravelRussia</div>
         
+
+<div id="greeting" style="color: #00f2ff; font-size: 1.5vw; text-align: center; margin-top: 20px;">
+    Добро пожаловать!
+</div>
+
+<script>
+    // Получаем данные пользователя из localStorage
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (user && user.name) {
+        document.getElementById('greeting').textContent = `Добро пожаловать, ${user.name}!`;
+    } else {
+        document.getElementById('greeting').textContent = 'Добро пожаловать!';
+    }
+</script>
+
+
         <div class="scrollable-content">
             <div class="main-content-wrapper">
                 <div class="main-content">
@@ -374,13 +391,13 @@
                                 </button>
                                 
                                 <ul id="activityMenu" class="submenu" style="display: none;">
-                                    <li><a href="hero-quests.html">Квесты героев</a></li>
-                                    <li><a href="learning.html">Обучение</a></li>
-                                    <li><a href="fitness.html">Физкультура</a></li>
-                                    <li><a href="good-call.html">Зов добра</a></li>
-                                    <li><a href="nft-market.html">NFT маркет</a></li>
-                                    <li><a href="ethnofigital.html">Этнофиджитал</a></li>
-                                    <li><a href="communities.html">Сообщества</a></li>
+                                    <li><a href="https://t.me/call_of_gesar_bot"  target="_blank" rel="noopener noreferrer">Квесты героев</a></li>
+                                    <li><a href="https://t.me/ZovZemliCyberMetaverse"  target="_blank" rel="noopener noreferrer">Обучение</a></li>
+                                    <li><a href="https://movequest.com"  target="_blank" rel="noopener noreferrer">Спорт</a></li>
+                                    <li><a href="https://t.me/ZovDobraBot"  target="_blank" rel="noopener noreferrer">Зов добра</a></li>
+                                    <li><a href="index.html#screen4">NFT маркет</a></li>
+                                    <li><a href="https://clck.ru/3MesA7"  target="_blank" rel="noopener noreferrer">Этнофиджитал</a></li>
+                                    <li><a href="https://vk.com/zovzemlicyber"  target="_blank" rel="noopener noreferrer">Сообщества</a></li>
                                 </ul>
                             </div>
                         </div>
