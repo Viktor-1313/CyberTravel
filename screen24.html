@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Маркетплейс | CyberTravelRussia</title>
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0e0e10;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+
+  /* Добавляем фоновое изображение */
+  background-image: url('images/tundra.jpg'); /* Укажите путь к вашему файлу */
+  background-size: cover; /* Растягивает под размер экрана */
+  background-position: center; /* Центрирует изображение */
+  background-repeat: no-repeat; /* Не повторять */
+  background-attachment: fixed; /* Фиксированный фон при скролле */
+}
+
+    header {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #2a2a2a;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 24px;
+      color: #00f2ff;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00f2ff;
+    }
+
+    .wallet-button {
+      background: #00f2ff;
+      color: #000;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    h1 {
+      color: #00f2ff;
+      margin-bottom: 20px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .filter-select, .filter-input {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    .nft-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .nft-card {
+      background: #1c1c1e;
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 5px solid #00f2ff;
+      transition: transform 0.2s;
+    }
+
+    .nft-card:hover {
+      transform: scale(1.03);
+    }
+
+    .nft-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .nft-title {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .nft-price {
+      color: #aaa;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .button-buy {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #00f2ff;
+      border: none;
+      border-radius: 6px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .button-buy:hover {
+      background: #00d4dd;
+    }
+
+    footer a {
+  color: #000;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.activity-feed {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+}
+
+.activity-item {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  background: #222;
+  border-left: 4px solid #00f2ff;
+  border-radius: 6px;
+}
+
+.logo {
+            position: absolute;
+            top: 2vw;
+            left: 2vw;
+            width: 10vw;
+            height: 10vw;
+            background-image: url('images/logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: var(--logo-bg-color);
+            border: 2px solid var(--logo-border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            z-index: 100;
+            animation: 
+                pulse 4s infinite,
+                float 3s ease-in-out infinite alternate;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 5px var(--logo-color));
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .logo:hover {
+            color: #fff;
+            background-color: #000;
+            border-color: #fff;
+            transform: scale(1.05);
+        }
+
+.logo {
+                font-size: 2.4vw;
+                padding: 0.8vw 1.6vw;
+            }
+.avatar-container {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(135deg, #333, #222);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+    }
+
+
+avatar {
+            position: absolute;
+            width: 25vw;
+            height: 25vw;
+            border-radius: 50%;
+            border: 0.2vw solid var(--primary-color);
+            cursor: pointer;
+            animation: float 6s ease-in-out infinite, hoverEffect 3s ease-in-out infinite alternate;
+            z-index: 5;
+            transition: transform 3s ease, box-shadow 3s ease;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(2vw) translateY(-2vw); }
+        }
+
+        @keyframes hoverEffect {
+            from {
+                transform: scale(1);
+                box-shadow: 0 0 1vw rgba(0, 242, 255, 0.4);
+            }
+            to {
+                transform: scale(1.2);
+                box-shadow: 0 0 2vw rgba(0, 242, 255, 0.8);
+            }
+        }
+
+        .avatar:hover {
+            animation: float 3s ease-in-out infinite, hoverEffect 0.6s ease-in-out infinite alternate;
+            transform: scale(1.2);
+            box-shadow: 0 0 2vw rgba(0, 242, 255, 0.8);
+        }
+
+
+  </style>
+</head>
+<body>
+
+
+
+
+  <!-- Header -->
+  <header>
+    <div class="logo" onclick="window.location.href='main.html'">CyberTravelRussia</div>
+    <nav>
+      <a href="#">Главная</a>
+      <a href="#">Личный кабинет</a>
+      <a href="#">Квесты</a>
+      <a href="#">NFT</a>
+    </nav>
+    <button class="wallet-button" onclick="connectWallet()">Подключить кошелёк</button>
+  </header>
+
+<div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
+    CyberTravelRussia
+</div>
+
+  <!-- Main Content -->
+  <h1>Маркетплейс NFT</h1>
+
+  <p style="text-align: center; color: #333;">Купить, продать или создать уникальные цифровые артефакты, связанные с вашими путешествиями.</p>
+
+  <!-- Filters -->
+  <div class="filters">
+    <select class="filter-select">
+      <option>Все категории</option>
+      <option>Артефакты</option>
+      <option>Коллекции</option>
+      <option>Туры</option>
+      <option>Награды</option>
+    </select>
+    <select class="filter-select">
+      <option>Цена</option>
+      <option>По возрастанию</option>
+      <option>По убыванию</option>
+    </select>
+    <input type="text" placeholder="Регион" class="filter-input">
+  </div>
+
+  <!-- NFT Gallery -->
+  <div class="nft-gallery">
+
+
+ <div class="nft-card">
+  <img src="images/arbai.jpeg" alt="Артефакт Байкала" class="nft-image" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
+  <div class="nft-title" style="color: white; font-size: 1.2vw; margin-top: 10px; text-align: center;">Артефакт Байкала</div>
+  <div class="nft-price" style="color: #ccc; font-size: 1vw; margin-top: 5px; text-align: center;">Цена: 0.5 ETH</div>
+  <button class="button-buy"
+          style="display: block; width: 80%; margin: 10px auto; padding: 10px; background-color: #00f2ff; color: black; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease;"
+          onmouseover="this.style.backgroundColor='#00c0cc'"
+          onmouseout="this.style.backgroundColor='#00f2ff'"
+          onclick="buyNFT('Артефакт Байкала', 0.5)">
+    Купить
+  </button>
+</div>
+
+
+    <div class="nft-card">
+  <img src="images/saha.jpg" alt="Коллекция Сахалина" class="nft-image" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
+  <div class="nft-title" style="color: white; font-size: 1.2vw; margin-top: 10px; text-align: center;">Коллекция Сахалина</div>
+  <div class="nft-price" style="color: #ccc; font-size: 1vw; margin-top: 5px; text-align: center;">Цена: 0.3 ETH</div>
+  <button class="button-buy"
+          style="display: block; width: 80%; margin: 10px auto; padding: 10px; background-color: #00f2ff; color: black; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease;"
+          onmouseover="this.style.backgroundColor='#00c0cc'"
+          onmouseout="this.style.backgroundColor='#00f2ff'">
+    Купить
+  </button>
+</div>
+
+
+<div class="nft-card">
+  <img src="images/gold.jpg" alt="Золотое кольцо России" class="nft-image" style="
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;">
+  <div class="nft-title" style="
+      color: white;
+      font-size: 1.2vw;
+      margin-top: 10px;
+      text-align: center;">Золотое кольцо России</div>
+  <div class="nft-price" style="
+      color: #ccc;
+      font-size: 1vw;
+      margin-top: 5px;
+      text-align: center;">Цена: 1.2 ETH</div>
+  <button class="button-buy"
+          style="
+              display: block;
+              width: 80%;
+              margin: 10px auto;
+              padding: 10px;
+              background-color: #00f2ff;
+              color: black;
+              border: none;
+              border-radius: 6px;
+              cursor: pointer;
+              transition: all 0.3s ease;"
+          onmouseover="this.style.backgroundColor='#00c0cc'"
+          onmouseout="this.style.backgroundColor='#00f2ff'">Купить</button>
+</div>
+
+    <div class="nft-card">
+  <img src="images/hold.jpg" alt="Сибирь. Вечная мерзлота" class="nft-image" style="
+      width: 100%; 
+      height: 150px; 
+      object-fit: cover; 
+      border-radius: 8px;">
+  <div class="nft-title" style="color: white; font-size: 1.2vw; margin-top: 10px; text-align: center;">
+      Сибирь. Вечная мерзлота
+  </div>
+  <div class="nft-price" style="color: #ccc; font-size: 1vw; margin-top: 5px; text-align: center;">
+      Цена: 0.7 ETH
+  </div>
+  <button class="button-buy"
+          style="
+              display: block; 
+              width: 80%; 
+              margin: 10px auto; 
+              padding: 10px; 
+              background-color: #00f2ff; 
+              color: black; 
+              border: none; 
+              border-radius: 6px; 
+              cursor: pointer; 
+              transition: all 0.3s ease;"
+          onmouseover="this.style.backgroundColor='#00c0cc'"
+          onmouseout="this.style.backgroundColor='#00f2ff'">
+    Купить
+  </button>
+</div>
+
+  </div>
+<h2 style="color: #00f2ff; margin-top: 60px;">Ваша активность</h2>
+<div id="activityFeed" class="activity-feed">
+  <p style="color: #888;">Нет активности</p>
+</div>
+<script src="https://js.stripe.com/v3/"></script> 
+
+
+<!-- Кнопка всегда внизу -->
+    <button class="button"
+            style="
+                position: fixed;
+                bottom: 5vh;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 15vw;
+                min-width: 150px;
+                padding: 1vw;
+                background: linear-gradient(45deg, #00f2ff, #0066ff);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: bold;
+                cursor: pointer;
+                z-index: 9999;
+                box-shadow: 0 0.6vw 1.2vw rgba(0, 100, 200, 0.4);
+                transition: all 0.3s ease;"
+            onmouseover="this.style.transform='translateX(-50%) scale(1.05)'; this.style.boxShadow='0 0 15px rgba(0, 242, 255, 0.6)'"
+            onmouseout="this.style.transform='translateX(-50%) scale(1)'; this.style.boxShadow='0 0.6vw 1.2vw rgba(0, 100, 200, 0.4)'"
+            onclick="window.location.href='screen2.html'">
+        Назад
+    </button>
+</div>
+
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 CyberTravelRussia. Все права защищены.<br>
+  <a href="#">Политика конфиденциальности</a> | 
+  <a href="#">Пользовательское соглашение</a>
+</footer>
+
+  <!-- JS -->
+  <script>
+    function connectWallet() {
+      alert("Функция подключения кошелька пока в разработке.");
+    }
+
+// Пример данных активности
+  const userActivity = [
+    'Вы купили NFT "Артефакт Байкала"',
+    'Вы завершили квест "Путешествие по Золотому кольцу"',
+    'Вы получили бонус Karma за отзыв о туре',
+    'Вы создали новое NFT "Снежный Урал"'
+  ];
+
+  function renderActivity() {
+    const feed = document.getElementById('activityFeed');
+    feed.innerHTML = '';
+
+    if (userActivity.length === 0) {
+      feed.innerHTML = '<p style="color: #888;">Нет активности</p>';
+      return;
+    }
+
+    userActivity.forEach(activity => {
+      const item = document.createElement('div');
+      item.className = 'activity-item';
+      item.textContent = activity;
+      feed.appendChild(item);
+    });
+  }
+
+// Пример ключа Stripe (публичный)
+  const stripe = Stripe("pk_test_XXXXXXXXXXXXXXXXXXXXXXXX");
+
+  function buyNFT(nftName, ethPrice) {
+    alert(`Начинаем покупку NFT: ${nftName} за ${ethPrice} ETH`);
+
+    // Здесь можно запустить модальное окно с выбором способа оплаты
+    // Ниже пример простого запроса в Stripe (замените на реальные данные)
+
+    fetch('/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nft: nftName, price: ethPrice * 3000 }) // переводим ETH в USD
+    })
+    .then(res => res.json())
+    .then(data => {
+      return stripe.redirectToCheckout({ sessionId: data.sessionId });
+    })
+    .then(result => {
+      if (result.error) {
+        alert(result.error.message);
+      }
+    })
+    .catch(error => {
+      console.error('Ошибка оплаты:', error);
+      alert('Произошла ошибка при оплате.');
+    });
+  }
+
+  // Вызываем при загрузке
+  window.onload = renderActivity;
+
+
+  </script>
+
+</body>
+</html>

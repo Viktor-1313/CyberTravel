@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Бонусы — Новая карма</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+
+      /* Фон */
+      background-image: url('images/23.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .points-display {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #1a1a1a;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+    }
+
+    .points-display strong {
+      color: #00f2ff;
+    }
+
+    h1 {
+      color: #00f2ff;
+      margin-bottom: 40px;
+    }
+
+    .bonus-container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .bonus-card {
+      background: #1c1c1e;
+      padding: 15px 20px;
+      border-radius: 10px;
+      border-left: 5px solid #00f2ff;
+      transition: transform 0.2s, background 0.3s;
+      cursor: pointer;
+    }
+
+    .bonus-card:hover {
+      transform: scale(1.02);
+      background: #252527;
+    }
+
+    .bonus-title {
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .bonus-desc {
+      color: #ccc;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .button-buy {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #00f2ff;
+      border: none;
+      border-radius: 6px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .button-buy:hover {
+      background: #00d4dd;
+    }
+
+    .disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+.logo {
+            position: absolute;
+            top: 2vw;
+            left: 2vw;
+            width: 10vw;
+            height: 10vw;
+            background-image: url('images/logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: var(--logo-bg-color);
+            border: 2px solid var(--logo-border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            z-index: 100;
+            animation: 
+                pulse 4s infinite,
+                float 3s ease-in-out infinite alternate;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 0 5px var(--logo-color));
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .logo:hover {
+            color: #fff;
+            background-color: #000;
+            border-color: #fff;
+            transform: scale(1.05);
+        }
+
+.logo {
+                font-size: 2.4vw;
+                padding: 0.8vw 1.6vw;
+            }
+.avatar-container {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(135deg, #333, #222);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+    }
+
+
+avatar {
+            position: absolute;
+            width: 25vw;
+            height: 25vw;
+            border-radius: 50%;
+            border: 0.2vw solid var(--primary-color);
+            cursor: pointer;
+            animation: float 6s ease-in-out infinite, hoverEffect 3s ease-in-out infinite alternate;
+            z-index: 5;
+            transition: transform 3s ease, box-shadow 3s ease;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(2vw) translateY(-2vw); }
+        }
+
+        @keyframes hoverEffect {
+            from {
+                transform: scale(1);
+                box-shadow: 0 0 1vw rgba(0, 242, 255, 0.4);
+            }
+            to {
+                transform: scale(1.2);
+                box-shadow: 0 0 2vw rgba(0, 242, 255, 0.8);
+            }
+        }
+
+        .avatar:hover {
+            animation: float 3s ease-in-out infinite, hoverEffect 0.6s ease-in-out infinite alternate;
+            transform: scale(1.2);
+            box-shadow: 0 0 2vw rgba(0, 242, 255, 0.8);
+        }
+
+  </style>
+</head>
+<body>
+
+
+<div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
+    CyberTravelRussia
+</div>
+
+
+  <!-- Отображение кармы -->
+  <div class="points-display">
+    Карма: <strong id="karmaCount">0</strong>
+  </div>
+
+  <h1>Бонусы. Новая карма</h1>
+
+  <p style="text-align: center; color: #aaa;">Выберите бонус, который хотите активировать за вашу карму.</p>
+
+  <div class="bonus-container">
+    <div class="bonus-card" data-cost="50">
+      <div class="bonus-title">+10% к опыту на 5 минут</div>
+      <div class="bonus-desc">Временное усиление даст вам больше опыта во время квестов.</div>
+      <button class="button-buy" onclick="buyBonus(this, 50)">Активировать</button>
+    </div>
+
+    <div class="bonus-card" data-cost="70">
+      <div class="bonus-title">Щит невидимости</div>
+      <div class="bonus-desc">Защита от случайного нападения монстров на 3 минуты.</div>
+      <button class="button-buy" onclick="buyBonus(this, 70)">Активировать</button>
+    </div>
+
+    <div class="bonus-card" data-cost="90">
+      <div class="bonus-title">Максимальное здоровье +20</div>
+      <div class="bonus-desc">Повышает уровень здоровья вашего аватара.</div>
+      <button class="button-buy" onclick="buyBonus(this, 90)">Активировать</button>
+    </div>
+
+    <div class="bonus-card" data-cost="30">
+      <div class="bonus-title">Удача в крафте</div>
+      <div class="bonus-desc">Шанс удвоить ресурсы при сборе материалов.</div>
+      <button class="button-buy" onclick="buyBonus(this, 30)">Активировать</button>
+    </div>
+
+    <div class="bonus-card" data-cost="60">
+      <div class="bonus-title">Телепорт к базе</div>
+      <div class="bonus-desc">Мгновенный возврат к безопасной точке.</div>
+      <button class="button-buy" onclick="buyBonus(this, 60)">Активировать</button>
+    </div>
+  </div>
+
+
+<!-- Кнопка всегда внизу -->
+    <button class="button"
+            style="
+                position: fixed;
+                bottom: 5vh;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 15vw;
+                min-width: 150px;
+                padding: 1vw;
+                background: linear-gradient(45deg, #00f2ff, #0066ff);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: bold;
+                cursor: pointer;
+                z-index: 9999;
+                box-shadow: 0 0.6vw 1.2vw rgba(0, 100, 200, 0.4);
+                transition: all 0.3s ease;"
+            onmouseover="this.style.transform='translateX(-50%) scale(1.05)'; this.style.boxShadow='0 0 15px rgba(0, 242, 255, 0.6)'"
+            onmouseout="this.style.transform='translateX(-50%) scale(1)'; this.style.boxShadow='0 0.6vw 1.2vw rgba(0, 100, 200, 0.4)'"
+            onclick="window.location.href='screen2.html'">
+        Назад
+    </button>
+</div>
+
+
+  <script>
+    let karma = 0;
+
+    function buyBonus(button, cost) {
+      if (karma >= cost) {
+        karma -= cost;
+        updateKarmaDisplay();
+        alert("Вы получили бонус: " + button.closest('.bonus-card').querySelector('.bonus-title').innerText);
+      } else {
+        alert("Недостаточно кармы для покупки этого бонуса.");
+        button.disabled = true;
+        button.classList.add('disabled');
+      }
+    }
+
+    function updateKarmaDisplay() {
+      document.getElementById('karmaCount').textContent = karma;
+    }
+
+    window.onload = function () {
+      const savedKarma = parseInt(localStorage.getItem('userKarma')) || 0;
+      karma = savedKarma;
+      updateKarmaDisplay();
+    };
+
+    window.onbeforeunload = function () {
+      localStorage.setItem('userKarma', karma);
+    };
+  </script>
+
+</body>
+</html>
